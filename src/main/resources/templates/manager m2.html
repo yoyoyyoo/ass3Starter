@@ -53,20 +53,26 @@
   <div class="container">
     <!-- Display filtered all pets -->
     <div class="sub-div">
-      <button onclick="toggleAllPets()"> View Pet Owner</button>
+      <button onclick="toggleAllPets()"> View All Pets</button>
       <br />
-      <div id="pendingPetOwner" style="display:none; ">
-        <h2>Pending Registration Request</h2>
+      <div id="allPets" style="display:none; ">
+        <h2>List All Pets</h2>
         <table border="1">
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Status</th>
+            <th>Pet Name</th>
+            <th>Pet Species</th>
+            <th>Pet Color</th>
+            <th>Pet Size</td>
+            <th>Adopt Status</th>
+            <th>Manage By</th>
           </tr>
-          <tr th:each="owners:${pendingOwners}">
-            <td th:text="${owners.firstName}"></td>
-            <td th:text="${owners.lastSpecies}"></td>
-            <td th:text="${owners.Status}"></td>
+          <tr th:each="pets:${allPets}">
+            <td th:text="${pets.petName}"></td>
+            <td th:text="${pets.petSpecies}"></td>
+            <td th:text="${pets.petColor}"></td>
+            <td th:text="${pets.petSize}"></td>
+            <td th:text="${pets.adoptStatus}"></td>
+            <td th:text="${pets.employee.lastName}"></td>
           </tr>
         </table>
       </div>
