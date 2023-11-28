@@ -16,6 +16,7 @@ public class Pets {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO) 
     Integer id; 
+    String petId;
     String petName;
     String petSpecies;
     String petColor;
@@ -29,8 +30,9 @@ public class Pets {
     Employee employee;   
 
 
-    public Pets(String petName, String petSpecies, String petColor, String petSize, PetOwner petOwner, Employee employee, String adoptStatus) {
+    public Pets(String petId, String petName, String petSpecies, String petColor, String petSize, PetOwner petOwner, Employee employee, String adoptStatus) {
         
+        this.petId = petId;
         this.petName = petName;
         this.petSpecies = petSpecies;
         this.petColor = petColor;

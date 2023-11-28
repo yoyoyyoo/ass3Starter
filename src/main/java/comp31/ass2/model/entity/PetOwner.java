@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,18 +22,28 @@ public class PetOwner {
     String firstName;
     String lastName;
     String password;
+    String email;
     String status = "submitted";// set default when a new user register
-    @OneToMany(mappedBy = "petOwner")
-    List<Pets> pets;
+    Boolean preference = false;
+    @ManyToOne
+    @JoinColumn(name = "fkey_pet")
+    Pets preferredPet;
 
 
 
-    public PetOwner(String userId, String firstName, String lastName, String password, String status) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.status = status;
-    }
+public PetOwner(String userId, String firstName, String lastName, String password, String status, String email,
+    Boolean preference) {
+    this.userId = userId;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.password = password;
+    this.email = email;
+    this.status = status;
+    this.preference = preference;
+}
+
+public void setStatus(String newStatus) {
+    this.status = newStatus;
+}
 
 }
